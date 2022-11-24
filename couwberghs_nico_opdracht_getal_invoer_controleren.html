@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nico Couwberghs" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Opdracht: Getal invoer controleren</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      "use strict";
+
+      let getallen = [];
+      let aantal = prompt("Hoeveel getallen wil je ingeven?");
+
+      let controleAantal = () => {
+        if (aantal == null) {
+          document.write(`<p>U heeft geannuleerd!</p>`);
+        } else if (aantal.length == 0) {
+          document.write(`<p>U heeft niets ingegeven!</p>`);
+        } else if (!isNaN(aantal)) {
+          return aantal;
+        } else {
+          document.write(`<p>Dit is geen correcte ingave!</p>`);
+          return 0;
+        }
+      };
+
+      aantal = controleAantal(aantal);
+
+      let getalIngeven = (getal) => {
+        getallen.push(getal);
+      };
+
+      let controleGetal = (getal) => {
+        if (getal == null || getal.length == 0 || isNaN(getal)) {
+          return "fout";
+        } else {
+          return getal;
+        }
+      };
+
+      if (aantal > 0) {
+        for (let i = 0; i < aantal; i++) {
+          let getal = prompt("Geef getal in");
+          getal = controleGetal(getal);
+          getalIngeven(getal);
+        }
+        document.write(getallen);
+      }
+    </script>
+  </body>
+</html>

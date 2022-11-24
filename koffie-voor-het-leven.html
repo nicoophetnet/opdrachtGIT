@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nico Couwberghs" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Bonus opdracht: Koffie</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      "use strict";
+
+      function ingeven() {
+        let geboortejaar = prompt("Wat is jou geboortejaar?");
+        let leeftijdOverlijden = prompt("Hou oud ga je worden?");
+        let aantalKoppenPerDag = prompt(
+          "Hoeveel koppen koffie drink je per dag?"
+        );
+
+        if (
+          geboortejaar == null ||
+          leeftijdOverlijden == null ||
+          aantalKoppenPerDag == null
+        ) {
+          document.write(`<p>U heeft geannuleerd!</p>`);
+        } else if (
+          geboortejaar.length == 0 ||
+          leeftijdOverlijden.length == 0 ||
+          aantalKoppenPerDag.length == 0
+        ) {
+          document.write(`<p>U heeft niets ingevuld!</p>`);
+        } else if (
+          isNaN(geboortejaar) ||
+          isNaN(leeftijdOverlijden) ||
+          isNaN(aantalKoppenPerDag)
+        ) {
+          document.write(`<p>U bent verplicht getallen in te geven!</p>`);
+        } else {
+          tonen(geboortejaar, leeftijdOverlijden, aantalKoppenPerDag);
+        }
+      }
+
+      function tonen(geboortejaar, leeftijdOverlijden, aantalKoppenPerDag) {
+        let ouderdom = 2022 - geboortejaar;
+        let aantalKoppen =
+          (leeftijdOverlijden - ouderdom) * (aantalKoppenPerDag * 365);
+        document.write(
+          `<p>Je bent nu ${ouderdom}. Tegen ${aantalKoppenPerDag} koppen koffie per dag zal je ${aantalKoppen} koppen koffie drinken als je ${leeftijdOverlijden} jaar oud zal worden.</p>`
+        );
+      }
+
+      ingeven();
+    </script>
+  </body>
+</html>

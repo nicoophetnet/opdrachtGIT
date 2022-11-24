@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Nico Couwberghs" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>Opdracht: Naamcontrole via functie</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let voornaam;
+      let achternaam;
+
+      function controle(naam) {
+        if (naam == null) {
+          document.write("<p>U heeft geannuleerd!</p>");
+          return false;
+        } else if (naam.length == 0) {
+          document.write("<p>U heeft niets ingevuld!</p>");
+          return false;
+        } else if (naam.length < 2) {
+          document.write("<p>U heeft minder dan 2 karakters ingevuld!</p>");
+          return false;
+        } else {
+          naam = naam.charAt(0).toUpperCase() + naam.substring(1);
+          return naam;
+        }
+      }
+
+      voornaam = prompt("Wat is uw voornaam?");
+      voornaam = controle(voornaam);
+
+      if (voornaam != false) {
+        achternaam = prompt("Wat is uw achternaam?");
+        achternaam = controle(achternaam);
+        if (achternaam != false) {
+          document.write(`<p>Hey ${voornaam} ${achternaam}</p>`);
+        }
+      }
+    </script>
+  </body>
+</html>
